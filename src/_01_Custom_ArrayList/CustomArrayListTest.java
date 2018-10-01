@@ -65,9 +65,7 @@ public class CustomArrayListTest {
 		list.add(new Student("Sara"));
 		list.add(new Student("Kamara"));
 		list.add(new Student("Devaugn"));
-		
 		list.remove(0);
-		
 		if(!list.get(0).name.equals("Sara")) {
 			fail("list.get(0) returning improper value.");
 		}
