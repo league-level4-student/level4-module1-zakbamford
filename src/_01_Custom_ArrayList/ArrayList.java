@@ -21,18 +21,22 @@ public class ArrayList<T> {
 		T[] temp = (T[]) new Object[arr.length + 1];
 		for (int i = 0; i < arr.length; i++)
 			temp[i] = arr[i];
+		temp[arr.length] = val;
 		arr = temp;
-		arr[arr.length - 1] = val;
 	}
 
 	public void insert(int loc, T val) throws IndexOutOfBoundsException {
 		if (loc < arr.length - 1) {
-			arr = (T[]) new Object[arr.length + 1];
-			for (int i = arr.length - 1; i <= loc; i--)
-				arr[i + 1] = arr[i];
-		} else if (loc == arr.length - 1)
-			add(val);
-		else
+			T[] temp = (T[]) new Object[arr.length + 1];
+			for (int i = arr.length - 1; i >= 0; i--) {
+				if (i < loc)
+					temp[i] = arr[i];
+				if (i >= loc)
+					temp[i + 1] = arr[i];
+			}
+			temp[loc] = val;
+			arr = temp;
+		} else
 			throw new IndexOutOfBoundsException();
 	}
 
@@ -47,8 +51,8 @@ public class ArrayList<T> {
 		if (loc >= arr.length)
 			throw new IndexOutOfBoundsException();
 		T[] temp = (T[]) new Object[arr.length - 1];
-		for (int i = 0; i < arr.length - 1; i++) {
-			if (i <= loc)
+		for (int i = 0; i < arr.length; i++) {
+			if (i < loc)
 				temp[i] = arr[i];
 			if (i > loc)
 				temp[i - 1] = arr[i];
