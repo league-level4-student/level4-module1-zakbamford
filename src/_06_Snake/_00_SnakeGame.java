@@ -86,13 +86,13 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// of the game. The smaller the number, the faster it goes.
 		switch (choice) {
 		case "Expert":
-			timer.setDelay(250);
+			timer.setDelay(100);
 			break;
 		case "Moderate":
-			timer.setDelay(500);
+			timer.setDelay(250);
 			break;
 		case "Beginner":
-			timer.setDelay(1000);
+			timer.setDelay(500);
 			break;
 		default:
 			timer.setDelay(1000);
@@ -171,6 +171,8 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		switch (arr[input]) {
 		case "Yes" :
 			snake.reset(new Location(rng.nextInt(WIDTH), rng.nextInt(HEIGHT)));
+			setFoodLocation();
+			timer.start();
 			break;
 		case "No" :
 			System.exit(0);
